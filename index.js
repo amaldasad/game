@@ -1,6 +1,9 @@
 var mainPlayer;
 var harang = [];
 var score;
+var x = document.getElementById("myAudio");
+const mySound = document.getElementById("sound");
+
 
 function removeOverlay() {
     document.getElementById("game-over").style.display = "none";
@@ -35,8 +38,21 @@ var harangHeight = screen.height/30;
 var screenSizeWidth = screen.width;
 var screenSizeHeight = screen.height;
 }
+function enablebg() {
+		x.autoplay = true;
+  x.loop = true;
+  x.load();
+  
+} 
+function disablebg() { 
+	x.autoplay = false;
+  x.loop = false;
+  x.load();
+} 
+
 
 function startGame() {
+	enablebg();
     document.getElementById("forkLink").style.display = "none";
     mainPlayer = new component(playerWidth, playerHeight, "#fff", playerPosX, playerPosY);
     score = new component("2em", "Audiowide, Arial", "#fff", screenSizeWidth/50, screenSizeHeight/20, "text");
@@ -220,6 +236,9 @@ else if (e.keyCode == '39' || e.keyCode == '68') {
 }
 
 function gameOver() {
+	disablebg();
+	mySound.play();
+	
     var savedScore = myGameArea.frameNo;
     document.getElementById("savedMainScore").innerHTML = savedScore;
     var highscore = localStorage.getItem("highscore");

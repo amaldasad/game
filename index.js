@@ -259,10 +259,14 @@ document.getElementById("game-over").style.display="block";
 }
 
 function mainMenu() {
+	
     document.getElementById("game-over").style.display = "none";
     myGameArea.stop();
 myGameArea.clear();
 harang = [];
+x.autoplay = false;
+  x.loop = false;
+
 
 
 var element = document.getElementsByTagName("canvas"), index;
